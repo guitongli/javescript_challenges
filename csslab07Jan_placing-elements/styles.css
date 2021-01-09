@@ -1,0 +1,23 @@
+body {
+    background-color: dimgray;
+    color: white;
+}
+
+header {
+    padding: 10px;
+    margin: 20px;
+    background-color: lightgray;
+    border: 1px dashed black;
+    box-sizing: border-box;
+    display: inline-block;
+    height = 20px
+    position: relative;
+}
+#menu { 
+    height: 20 px;
+    float: inline-end;
+}
+#logo { 
+    left: 5 vw;
+    float: inline-start;
+}
