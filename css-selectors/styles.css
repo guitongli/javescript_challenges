@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: antiquewhite;
+}
+
+header {
+    text-align: center;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+aside {
+    float: right;
+}
+
+.tomato {
+    position: fix;
+    left: 40% vw;
+    font-size: 300rem;
+    padding-bottom: 30px;
+    transition: background-color 0.5s ease-in;
+}
+img {
+    height: 200px;
+    width: 30px;
+}
