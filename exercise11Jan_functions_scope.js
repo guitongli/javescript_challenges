@@ -38,9 +38,14 @@ function sortNumbers(num) {
 // Each time it is called it should return the sum of the number that is passed in and all other numbers that were passed in previous calls.
 //That is, it should return the sum of all the numbers that were ever passed to it.
 
-var sum = 0;
-function getTotaler(num) {
-    sum = sum + num;
-    return sum;
-    getTotaler();
+
+function getTotaler() {
+    var sum = 0
+    return function (num) {
+        sum = sum + num;
+        return sum;
+    }; 
 }
+
+that is why they used another var to hold the block! because it takes what it returns. the child block holds the 
+sum 

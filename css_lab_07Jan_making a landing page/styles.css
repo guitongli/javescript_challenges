@@ -1,5 +1,5 @@
 body {
-    background-color: dimgray;
+    background-color: white;
     color: white;
 }
 
@@ -18,15 +18,19 @@ header {
     right: 0;
 }
 #logo {
-    width: 190px;
+    width: 197px;
     float: left;
-    height: 50px;
+    height: 45px;
     margin: 0;
+    padding: 0;
 }
 .theme {
     position: relative;
-    display: inline-block; /* Make the width of box same as image */
+    display: inline-block;
     margin: 0, auto;
+}
+.thime .mainpic {
+    width: 100%;
 }
 .theme .text {
     position: absolute;

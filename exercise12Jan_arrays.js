@@ -34,3 +34,12 @@ function getLessThanZero(numArray) {
     }
     return lessThanZero;
 }
+
+//or
+
+function getLessThanZero(numArray) {
+    let newArray = numArray.filter(function (num) {
+        return num < 0;
+    });
+    return newArray;
+}
