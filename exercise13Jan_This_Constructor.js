@@ -31,14 +31,11 @@ function invertCase(string) {
 // Bonus task: this doesn't run and I am stuck here.
 
 function Countdown(arg) {
-    this.initNum = arg;
     this.start = function () {
-        function show() {
-            console.log(i);
-        }
-
-        for (var i = this.initNum; i > 0; i--) {
-            setTimeout(show, 1000);
+        while (arg > 0) {
+            console.log(arg);
+            setTimeout(this.start, 1000);
+            arg = arg - 1;
         }
     };
 }
