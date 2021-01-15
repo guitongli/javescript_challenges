@@ -11,5 +11,6 @@ a {
     border: 3px dotted red
     position: relative
     height: 1em;
+    left: 100%
 }
 
