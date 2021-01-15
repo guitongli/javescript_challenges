@@ -10,7 +10,7 @@ a {
     overflow: hidden;
     border: 3px dotted red
     position: relative
-    height: 1em;
+    height: 20px;
     left: 100%
 }
 
