@@ -1,0 +1,15 @@
+a {
+    padding-left: 50px;
+}
+#headlines {
+    white-space: nowrap;
+    position: absolute;
+
+}
+#wrapper {
+    overflow: hidden;
+    border: 3px dotted red
+    position: relative
+    height: 1em;
+}
+

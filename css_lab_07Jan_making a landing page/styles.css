@@ -159,7 +159,6 @@ p {
         width: 100%;
         height: auto;
         position: relative;
-        align-items: center;
     }
     #menu {
         height: 30 px;
@@ -185,7 +184,6 @@ p {
 @media (prefers-color-scheme: dark) {
     header {
         background-color: black;
-        margin: auto, 0;
     }
     theme {
         margin: 0;
