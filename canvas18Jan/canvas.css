@@ -1,0 +1,8 @@
+canvas {
+    border: 3px dotted black;
+}
+
+#smallCanvas {
+    z-index: 999;
+    position: relative;
+}
