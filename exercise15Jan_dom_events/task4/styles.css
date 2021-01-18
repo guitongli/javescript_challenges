@@ -1,0 +1,11 @@
+#outerDiv {
+    height: 100px;
+    width: 100px;
+    background-color: burlywood;
+}
+
+#innerDiv {
+    height: 50px;
+    width: 50px;
+    background-color: royalblue;
+}
