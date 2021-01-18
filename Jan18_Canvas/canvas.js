@@ -1,5 +1,3 @@
-//bonus task pending
-
 var stickMan = document.getElementById("stickMan");
 
 var ctx = stickMan.getContext("2d");
@@ -40,3 +38,33 @@ ctx.moveTo(100, 200);
 ctx.lineTo(175, 280);
 ctx.stroke();
 ctx.closePath();
+
+var bigCanvas = document.getElementById("bigCanvas");
+var ctx1 = bigCanvas.getContext("2d");
+
+var dx = 150;
+var dy = 150;
+function clear() {
+    ctx1.clearRect(0, 0, bigCanvas.width, bigCanvas.height);
+}
+function redraw(dx, dy) {
+    ctx1.drawImage(stickMan, dx, dy);
+}
+
+window.addEventListener("keydown", function (e) {
+    var key = e.key;
+    var step = 5;
+    if (key === "ArrowDown") {
+        clear();
+        redraw(dx, (dy += step));
+    } else if (key === "ArrowUp") {
+        clear();
+        redraw(dx, (dy -= step));
+    } else if (key === "ArrowLeft") {
+        clear();
+        redraw((dx -= step), dy);
+    } else if (key === "ArrowRight") {
+        clear();
+        redraw((dx += step), dy);
+    }
+});
