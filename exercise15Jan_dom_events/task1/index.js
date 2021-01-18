@@ -1,3 +1,5 @@
+console.log("DOM event - ex 1");
+
 var square = document.getElementById("follow");
 function mousemoveHandler(event) {
     var x = event.clientX;
