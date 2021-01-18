@@ -3,6 +3,6 @@ canvas {
 }
 
 #smallCanvas {
+    color: black;
     z-index: 999;
-    position: relative;
 }

@@ -9,8 +9,9 @@ function genRandomColor() {
     return "rgb(" + R + "," + G + "," + B + ")";
 }
 
-smallDiv.addEventListener("mousemove", function () {
+smallDiv.addEventListener("mousemove", function (e) {
     smallDiv.style.backgroundColor = genRandomColor();
+    e.stopPropagation();
 });
 
 bigDiv.addEventListener("mousemove", function () {

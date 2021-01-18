@@ -1,4 +1,4 @@
-var smallCanvas = document.getElementById("bigCanvas");
+var bigCanvas = document.getElementById("bigCanvas");
 var ctx = smallCanvas.getContext("2d");
 
 ctx.beginPath();
