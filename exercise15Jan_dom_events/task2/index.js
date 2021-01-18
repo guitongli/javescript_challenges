@@ -1,16 +1,16 @@
-// this is stuck for now
-
+// revised code
 console.log("DOM event - ex 2");
 
-function charReplace() {
-    var typedChars = document.getElementById("typeHere").childNodes[0]
-        .nodeValue;
-    var preparedChars = document.getElementById("hiddenArea").childNodes[0]
-        .nodeValue;
-    var typedLength = typedChars.split("").length;
+var address = "Four score and seven years ago our fath";
+var inputArea = document.getElementsByTagName("textarea")[0];
 
-    typedChars.addEventListener("change", function () {
-        typedChars = preparedChars.split("").slice(0, typedLength - 1);
+inputArea.addEventListener("input", function () {
+    inputArea.value = address.slice(0, inputArea.value.length);
+});
+
+//or
+document
+    .getElementsByTagName("textarea")[0]
+    .addEventListener("input", function (event) {
+        event.target.value = address.slice(0, event.target.value.length);
     });
-}
-charReplace();

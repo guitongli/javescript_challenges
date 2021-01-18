@@ -1,33 +1,32 @@
-var news = document.getElementsByTagName("a");
-var newsTrain = document.getElementById("wrapper");
-var lineStart = newsTrain.offsetLeft;
+// it doesn't run automatically when I open the html file
+// the end of the ticker always gets filled up some seconds delayed
 
-function moveNews() {
-    lineStart--;
-    if (lineStart < -news[0].offsetWidth) {
-        lineStart += news[0].offsetWidth;
+(function () {
+    console.log("ticker goes left");
 
-        newsTrain.appendChild(news[0]);
-        // why is the news[0] autimatically updated?
+    var news = document.getElementsByTagName("a");
+    var newsTrain = document.getElementById("wrapper");
+    var ticker = document.getElementById("ticker");
+    var curX = newsTrain.offsetLeft;
+    var animID;
+
+    function moveNews() {
+        curX--;
+        if (curX <= -news[0].offsetWidth) {
+            curX += news[0].offsetWidth;
+
+            newsTrain.appendChild(news[0]);
+        }
+
+        newsTrain.style.left = curX + "px";
+        animID = requestAnimationFrame(moveNews);
     }
+    moveNews();
 
-    newsTrain.style.left = lineStart + "px";
-    requestAnimationFrame(moveNews);
-}
-moveNews();
-// why does it not run itself when i open the web page?
-// it runs only when I put the code in the console manually
-
-var requestID = requestAnimationFrame(moveNews);
-
-function stopper() {
-    for (var i = 0; i < news.length; i++) {
-        news[i].addEventListener("mouseenter", function (event) {
-            event.cancelAnimationFrame(requestID);
-        });
-        news[i].addEventListener("mouseleave", function (e) {
-            // how to reactivate the animation?
-        });
-    }
-}
-stopper();
+    ticker.addEventListener("mouseenter", function () {
+        cancelAnimationFrame(animID);
+    });
+    ticker.addEventListener("mouseleave", function () {
+        moveNews();
+    });
+})();
