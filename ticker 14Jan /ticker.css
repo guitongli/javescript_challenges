@@ -1,0 +1,10 @@
+a {
+    padding-left: 50px;
+}
+#wrapper {
+    overflow: hidden;
+    white-space: nowrap
+    background-color: forestgreen;
+    height: 20px;
+    position: relative;
+}

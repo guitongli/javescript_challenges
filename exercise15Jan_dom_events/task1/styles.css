@@ -1,0 +1,10 @@
+div {
+    height: 100px;
+    width: 100px;
+    background-color: aqua;
+    left: 40px;
+}
+
+body {
+    height: 2000px;
+}
