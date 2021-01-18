@@ -6,13 +6,13 @@ function genRandomColor() {
     var R = Math.floor(Math.random() * 256);
     var G = Math.floor(Math.random() * 256);
     var B = Math.floor(Math.random() * 256);
-    return R + "," + G + "," + B;
+    return "rgb(" + R + "," + G + "," + B + ")";
 }
 
 smallDiv.addEventListener("mousemove", function () {
-    smallDiv.style.backgroundColor = geRandomColor();
+    smallDiv.style.backgroundColor = genRandomColor();
 });
 
 bigDiv.addEventListener("mousemove", function () {
-    bigDiv.style.backgroundColor = geRandomColor();
+    bigDiv.style.backgroundColor = genRandomColor();
 });
