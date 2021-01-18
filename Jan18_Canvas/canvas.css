@@ -2,7 +2,11 @@ canvas {
     border: 3px dotted black;
 }
 
-#smallCanvas {
-    color: black;
+#stickMan {
     z-index: 999;
+}
+
+#box {
+    position: relative;
+    z-index: 1;
 }
