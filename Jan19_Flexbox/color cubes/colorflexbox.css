@@ -1,0 +1,56 @@
+/* why does it not wrap?
+*/
+
+* {
+    margin: 0;
+}
+
+body {
+    box-sizing: border-box;
+}
+.bigbox {
+    margin: 1px;
+    display: flex;
+    display: inline-block;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 200px;
+    height: 200px;
+}
+
+.bigbox div {
+    height: 100px;
+    width: 100px;
+    margin: 0;
+    display: inline-flexbox;
+}
+
+#yellow {
+    background-color: yellow;
+}
+
+#black {
+    background-color: black;
+}
+#blue {
+    background-color: blue;
+}
+
+#orange {
+    background-color: orange;
+}
+
+#gray {
+    background-color: gray;
+}
+#pink {
+    background-color: pink;
+}
+
+#purple {
+    background-color: purple;
+}
+
+#green {
+    background-color: green;
+}
