@@ -10,8 +10,7 @@ body {
 }
 .bigbox {
     margin: 1px;
-    display: flex;
-    display: inline-block;
+    display: inline-flex;
     flex-wrap: wrap;
     flex-direction: row;
     width: 200px;
