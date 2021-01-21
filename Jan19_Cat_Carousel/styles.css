@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+img {
+    object-fit: cover;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 100%;
+}
+#pic1 {
+    left: 0;
+}
+.window {
+    height: 600 px;
+    overflow: hidden;
+}
+
+.on {
+    transition-property: transform;
+    transition-duration: 3s;
+    transform: translateX(0);
+}
+
+.off {
+    transition-property: transform;
+    transition-duration: 3s;
+    transform: translateX(-100%);
+}
