@@ -1,3 +1,6 @@
+// **I didn't get time yesterday to go through this project...
+// **will finish it and solve my questions today
+
 (function () {
     var kitties = document.getElementsByTagName("img");
     var currentKitty = 0;
@@ -14,9 +17,6 @@
         console.log("transition ended....", e.target.classList);
     });
 })();
-
-// **I didn't get time yesterday to go through this project...
-// **will finish it and solve my questions today
 
 // for (var i = 0; i < dots.length; i++) {
 //     dots[i].addEventListener("click", function (e) {
