@@ -4,16 +4,31 @@
 
 body {
     margin: 0;
+    overflow: hidden;
 }
 img {
-    object-fit: cover;
     height: 100%;
-    position: absolute;
-    top: 0;
+    position: relative;
     left: 100%;
 }
-#pic1 {
-    left: 0;
+
+.dots {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+}
+.dot {
+    border: 3px whitesmoke solid;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    margin: 5px;
+}
+.clicked {
+    background-color: whitesmoke;
+    pointer-events: none;
 }
 .window {
     height: 600 px;

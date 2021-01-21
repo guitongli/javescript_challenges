@@ -14,3 +14,42 @@
         console.log("transition ended....", e.target.classList);
     });
 })();
+
+// **I didn't get time yesterday to go through this project...
+// **will finish it and solve my questions today
+
+// for (var i = 0; i < dots.length; i++) {
+//     dots[i].addEventListener("click", function (e) {
+//         console.log(e.target.id.slice(3));
+//         clearTimeout(timer);
+//     });
+// }
+// for (var i = 0; i < dots.length; i++) {
+//     dots[i].addEventListener("click", function (e) {
+//         for (var i = 0; i < dots.length; i++) {
+//             if (dots[i] == e.target) {
+//                 // we have a winner!
+//                 console.log(i);
+//                 break;
+//             }
+//         }
+//         clearTimeout(timer);
+//     });
+// }
+// for (var i = 0; i < dots.length; i++) {
+//     dots[i].addEventListener("click", getDotClickHandler(i));
+// }
+
+// function getDotClickHandler(i) {
+//     return function () {
+//         console.log(i);
+//     };
+// }
+// for (var i = 0; i < dots.length; i++) {
+//     (function (i) {
+//         dots[i].addEventListener("click", function (e) {
+//             console.log(i);
+//             clearTimeout(timer);
+//         });
+//     })(i);
+// }
