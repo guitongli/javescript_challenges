@@ -128,8 +128,6 @@ $("button").on("click", function () {
     $(".effect").css({ visibility: "hidden" });
 });
 
-// diagnal +5 problem
-
 $("body").on("mousemove", function (e) {
     var relX = e.pageX - $(this).offset().left;
     var relY = e.pageY - $(this).offset().top;
@@ -137,4 +135,43 @@ $("body").on("mousemove", function (e) {
     $(".cursor")
         .css({ left: relX + 10 + "px" })
         .css({ top: relY + 10 + "px" });
+});
+
+cols.on("mouseover", function (e) {
+    var colNumber = $(cols).index($(e.currentTarget));
+    $(".token")
+        .eq(colNumber)
+        .addClass(currentPlayer + "border");
+});
+
+cols.on("mouseout", function (e) {
+    var colNumber = $(cols).index($(e.currentTarget));
+    $(".token")
+        .eq(colNumber)
+        .removeClass(currentPlayer + "border");
+});
+
+$(window).keydown(function (e) {
+    var order = 0;
+    if (e.which === 49) {
+        $(cols).eq(0).trigger("click.gameBegins");
+    }
+    if (e.which === 50) {
+        $(cols).eq(1).trigger("click.gameBegins");
+    }
+    if (e.which === 51) {
+        $(cols).eq(2).trigger("click.gameBegins");
+    }
+    if (e.which === 52) {
+        $(cols).eq(3).trigger("click.gameBegins");
+    }
+    if (e.which === 53) {
+        $(cols).eq(4).trigger("click.gameBegins");
+    }
+    if (e.which === 54) {
+        $(cols).eq(5).trigger("click.gameBegins");
+    }
+    if (e.which === 55) {
+        $(cols).eq(6).trigger("click.gameBegins");
+    }
 });
