@@ -5,4 +5,5 @@ $("button").on("click", function (e) {
     } catch (err) {
         alert(err);
     }
+    alert("yes!");
 });
