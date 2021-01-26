@@ -1,0 +1,11 @@
+input {
+    height: 30px;
+    width: 100px;
+    position: absolute;
+    left: 45%;
+    top: 50%;
+}
+
+.hovered {
+    background-color: aqua;
+}
