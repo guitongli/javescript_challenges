@@ -1,6 +1,6 @@
 input {
     height: 30px;
-    width: 100px;
+    width: 200px;
     position: absolute;
     left: 45%;
     top: 50%;
@@ -8,4 +8,16 @@ input {
 
 .hovered {
     background-color: aqua;
+}
+
+.results {
+    width: 206px;
+    position: absolute;
+    left: 45%;
+    top: 56%;
+    border: 1px gray solid;
+    border-radius: 2%;
+}
+p {
+    margin: 0;
 }
