@@ -197,8 +197,10 @@
     var matches = [];
     var results = $(".results");
     $("input").on("input", function () {
-        var written = $("input").val().toLowerCase();
         $("p").remove();
+        matches = [];
+        var written = $("input").val().toLowerCase();
+
         if (written.length === 0) {
             $("p").remove();
             console.log("zo");
