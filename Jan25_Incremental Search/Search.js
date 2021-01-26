@@ -201,10 +201,6 @@
         matches = [];
         var written = $("input").val().toLowerCase();
 
-        if (written.length === 0) {
-            $("p").remove();
-            console.log("zo");
-        }
         for (var i = 0; i <= countries.length - 1; i++) {
             if (countries[i].toLowerCase().indexOf(written) === 0) {
                 matches.push(countries[i]);
@@ -222,6 +218,10 @@
             htmlForFeedback += "<p class = 'country'>" + matches[j] + "</p>";
         }
         results.append(htmlForFeedback);
+        if (written.length === 0) {
+            $("p").remove();
+            console.log("zo");
+        }
     });
 
     results.on("mouseover.highlight", "p", function (event) {
