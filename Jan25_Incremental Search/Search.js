@@ -218,10 +218,7 @@
             htmlForFeedback += "<p class = 'country'>" + matches[j] + "</p>";
         }
         results.append(htmlForFeedback);
-        if (written.length === 0) {
-            $("p").remove();
-            console.log("zo");
-        }
+        //results.html(htmlForFeedback)
     });
 
     results.on("mouseover.highlight", "p", function (event) {
