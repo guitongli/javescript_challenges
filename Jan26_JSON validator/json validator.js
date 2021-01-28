@@ -1,9 +1,23 @@
-$("button").on("click", function (e) {
-    var input = $("textarea").val();
-    try {
-        var parsedObj = JSON.parse(input);
-    } catch (err) {
-        alert(err);
-    }
-    alert("yes!");
-});
+(function () {
+    var isValid;
+    var textarea = $("textarea");
+    var valid = $("#valid");
+    var invalid = $("#invalid");
+
+    textarea.on("input", function () {
+        try {
+            JSON.parse(textarea.val());
+            if (!isValid) {
+                isValid = true;
+                valid.show();
+                invalid.hide();
+            }
+        } catch (e) {
+            if (isValid !== false) {
+                isValid = false;
+                invalid.show();
+                valid.hide();
+            }
+        }
+    });
+})();

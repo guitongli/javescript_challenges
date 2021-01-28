@@ -1,15 +1,17 @@
-textarea {
-    width: 50%;
-    height: 30px;
-    position: absolute;
-    left: 25%;
-    top: 45%;
+body {
+    display: flex;
+    align-items: center;
 }
 
-button {
-    width: 15%;
-    height: 30px;
-    position: absolute;
-    left: 80%;
-    top: 45%;
+div {
+    display: none;
+    margin-left: 20px;
+}
+
+#valid {
+    color: green;
+}
+
+#invalid {
+    color: red;
 }
