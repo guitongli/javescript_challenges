@@ -1,5 +1,15 @@
 (function () {
-    var results = $(".results");
+    Handlebars.templates = Handlebars.templates || {};
+
+    var templates = document.querySelectorAll(
+        'script[type="text/x-handlebars-template"]'
+    );
+
+    Array.prototype.slice.call(templates).forEach(function (script) {
+        Handlebars.templates[script.id] = Handlebars.compile(script.innerHTML);
+    });
+
+    // var results = $(".results");
 
     $(".search").on("click", function () {
         getAndAppend("https://spicedify.herokuapp.com/spotify");
@@ -16,7 +26,7 @@
 
             cache: false,
             success: function (response) {
-                var resultsHtml = "";
+                // var resultsHtml = "";
                 response = response.artists || response.albums;
                 var itemList = response.items;
                 if (itemList.length > 1) {
@@ -28,16 +38,36 @@
                         "<p> No results for " + $("input").val() + "</p>"
                     );
                 }
-                console.log(response);
+                var showList = [];
                 for (var i = 0; i < itemList.length; i++) {
-                    resultsHtml +=
-                        "<div><img src = " +
-                        generateIMG(i) +
-                        "><a href ='" +
-                        itemList[i].external_urls.spotify +
-                        "'>" +
-                        itemList[i].name +
-                        "</a></div>";
+                    // resultsHtml +=
+                    //     "<div><img src = " +
+                    //     generateIMG(i) +
+                    //     "><a href ='" +
+                    //     itemList[i].external_urls.spotify +
+                    //     "'>" +
+                    //     itemList[i].name +
+                    //     "</a></div>";
+
+                    constructObject(
+                        itemList[i].name,
+                        generateIMG(i),
+                        itemList[i].external_urls.spotify
+                    );
+                }
+                console.log(showList);
+                var showShowList = { showList };
+                $(".wrapper").append(
+                    Handlebars.templates.results(showShowList)
+                );
+
+                function constructObject(name, image, link) {
+                    var item = {
+                        itemName: name,
+                        itemImg: image,
+                        itemLink: link,
+                    };
+                    showList.push(item);
                 }
 
                 function generateIMG(i) {
@@ -48,7 +78,7 @@
                     }
                 }
 
-                results.append(resultsHtml);
+                // results.append(resultsHtml);
                 if (response.next !== null) {
                     checkBottom();
                 }

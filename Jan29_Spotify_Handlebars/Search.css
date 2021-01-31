@@ -4,15 +4,15 @@
 body {
     background-color: #222222;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 h1 {
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     color: olivedrab;
-    position: absolute;
-    top: 5%;
-    left: 30%;
-    font-size: 4em;
+    text-align: center;
+    font-size: 5em;
+    margin: 0;
 }
 input {
     width: 200px;
@@ -31,11 +31,9 @@ a {
     text-decoration: none;
 }
 container {
-    margin-top: 150px;
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 select {
     margin-left: 20px;
@@ -51,9 +49,8 @@ img {
     width: 50px;
 }
 
-.results {
-    position: absolute;
-    top: 200px;
+.container {
+    color: white;
 }
 div {
     margin: 5px;
@@ -68,7 +65,17 @@ div {
 }
 .resultsof {
     color: whitesmoke;
-    position: absolute;
-    top: 170px;
-    left: 210px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.wrapper {
+    position: relative;
+
+    left: 40%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
 }
