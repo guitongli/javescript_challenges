@@ -15,8 +15,20 @@ const conversation = {
                 yes: {
                     q: "but I still want him back, should I call him?",
                     answers: {
-                        yes: { q: "this hurts" },
-                        no: { q: "thanks" },
+                        yes: {
+                            q: "this hurts",
+                            answers: {
+                                yes: undefined,
+                                no: undefined,
+                            },
+                        },
+                        no: {
+                            q: "thanks",
+                            answers: {
+                                yes: undefined,
+                                no: undefined,
+                            },
+                        },
                     },
                 },
 
@@ -27,22 +39,27 @@ const conversation = {
     },
 };
 function askQuestion(obj) {
-    readline.question(chalk.blue(obj.q), (answer) => {
-        if (answer == "yes") {
-            askQuestion(obj.answers.yes);
-            if (!obj.answers.yes.answers) {
-                readline.close();
-            }
-        } else if (answer == "no") {
-            askQuestion(obj.answers.no);
-            if (!obj.answers.no.answer) {
-                if (!obj.answers.no.answers) {
+    readline.question(
+        `${chalk.blue(obj.q)} ${chalk.green(
+            "[ " + Object.keys(obj.answers).join(" | ") + " ]"
+        )}\n`,
+        (answer) => {
+            if (answer == "yes") {
+                askQuestion(obj.answers.yes);
+                if (obj.answers[answer].answers.yes == undefined) {
                     readline.close();
                 }
+            } else if (answer == "no") {
+                askQuestion(obj.answers.no);
+                if (!obj.answers.no.answer) {
+                    if (!obj.answers.no.answers.no == undefined) {
+                        readline.close();
+                    }
+                }
+            } else {
+                askQuestion(obj);
             }
-        } else {
-            askQuestion(obj);
         }
-    });
+    );
 }
 askQuestion(conversation);
