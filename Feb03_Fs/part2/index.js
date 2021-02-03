@@ -29,9 +29,10 @@ function mapSizes(location) {
     //         } else if (items[i].isDirectory() == true) {
 
     //             mapSizes(location + "/" + items[i].name);
-    //         }
+    //        }
     //     }
-    console.log(map);
+   const obj = JSON.stringify(map)
+   fs.writeFileSync(files.json,obj)
 }
 
 mapSizes(__dirname);
