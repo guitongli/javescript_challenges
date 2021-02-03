@@ -17,49 +17,43 @@ const conversation = {
                     answers: {
                         yes: {
                             q: "this hurts",
-                            answers: {
-                                yes: undefined,
-                                no: undefined,
-                            },
+                            // answers: {
+                            //     quit: undefined,
+                            //     startagain: undefined,
+                            // },
                         },
                         no: {
                             q: "thanks",
-                            answers: {
-                                yes: undefined,
-                                no: undefined,
-                            },
+                            // answers: {
+                            //     quit: undefined,
+                            //     startagain: undefined,
+                            // },
                         },
                     },
                 },
-
                 no: { q: "but this is not fair to me" },
             },
         },
         no: { q: "I am busy as hell too" },
     },
 };
+
 function askQuestion(obj) {
-    readline.question(
-        `${chalk.blue(obj.q)} ${chalk.green(
-            "[ " + Object.keys(obj.answers).join(" | ") + " ]"
-        )}\n`,
-        (answer) => {
-            if (answer == "yes") {
-                askQuestion(obj.answers.yes);
-                if (obj.answers[answer].answers.yes == undefined) {
-                    readline.close();
-                }
-            } else if (answer == "no") {
-                askQuestion(obj.answers.no);
-                if (!obj.answers.no.answer) {
-                    if (!obj.answers.no.answers.no == undefined) {
-                        readline.close();
-                    }
-                }
-            } else {
-                askQuestion(obj);
+    readline.question(`${chalk.blue(obj.q)}\n`, (answer) => {
+        if (answer == "yes") {
+            askQuestion(obj.answers[answer]);
+            if (!obj.answers[answer].answers) {
+                readline.close();
             }
+        } else if (answer == "no") {
+            askQuestion(obj.answers[answer]);
+
+            if (!obj.answers.no.answers) {
+                readline.close();
+            }
+        } else {
+            askQuestion(obj);
         }
-    );
+    });
 }
 askQuestion(conversation);

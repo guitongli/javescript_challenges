@@ -27,10 +27,8 @@ function getRelocatedCity(city1, city2) {
     var country = getNameAndCountry(city2)[1];
     var newCity1 = {};
     Object.assign(newCity1, city1);
-    return {
-        newCity1,
-        country,
-    };
+    newCity1.country = country;
+    return newCity1;
 }
 
 //Exercise Generators
@@ -155,6 +153,14 @@ function* reverseArray(arr) {
     const arrRev = [...arr];
     yield arrRev.reverse();
 }
+
+/*function* reverse(original) {
+    const clone = [...original];
+    while (clone.length) {
+        yield clone.pop();
+    }
+}/*
+
 let iterator = reverseArray();
 
 let reversedArray = iterator.next();

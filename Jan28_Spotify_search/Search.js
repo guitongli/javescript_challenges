@@ -1,11 +1,11 @@
 (function () {
     var results = $(".results");
-
+    var nextURL;
     $(".search").on("click", function () {
-        getAndAppend("https://spicedify.herokuapp.com/spotify");
+        getAndAppend("https://spicedify.herokuapp.com/spotify", true);
     });
 
-    function getAndAppend(updatedURL) {
+    function getAndAppend(updatedURL, clicked) {
         $.ajax({
             method: "GET",
             url: updatedURL,
@@ -48,37 +48,42 @@
                     }
                 }
 
-                results.append(resultsHtml);
+                if (clicked) {
+                    results.html(resultsHtml);
+                } else {
+                    results.append(resultsHtml);
+                }
+
                 if (response.next !== null) {
                     checkBottom();
                 }
-                function checkBottom() {
-                    var nextURL =
-                        response.next &&
-                        response.next.replace(
-                            "api.spotify.com/v1/search",
-                            "spicedify.herokuapp.com/spotify"
-                        );
-                    console.log("check");
-                    if (
-                        $(window).scrollTop() + $(window).height() >=
-                        $(document).height() - 300
-                    ) {
-                        if (location.search.indexOf("scroll=infinite") > -1) {
-                            getAndAppend(nextURL);
-                            console.log("fe");
-                        } else {
-                            $(".more").css({ visibility: "visible" });
-                            $(".more").click(function () {
-                                getAndAppend(nextURL);
-                            });
-                        }
-                    } else {
-                        setTimeout(checkBottom, 1000);
-                        $(".more").css({ visibility: "hidden" });
-                    }
-                }
+                nextURL =
+                    response.next &&
+                    response.next.replace(
+                        "api.spotify.com/v1/search",
+                        "spicedify.herokuapp.com/spotify"
+                    );
             },
         });
+    }
+    function checkBottom() {
+        console.log("check");
+        if (
+            $(window).scrollTop() + $(window).height() >=
+            $(document).height() - 300
+        ) {
+            if (location.search.indexOf("scroll=infinite") > -1) {
+                getAndAppend(nextURL, false);
+                console.log("fe");
+            } else {
+                $(".more").css({ visibility: "visible" });
+                $(".more").click(function () {
+                    getAndAppend(nextURL, false);
+                });
+            }
+        } else {
+            setTimeout(checkBottom, 1000);
+            $(".more").css({ visibility: "hidden" });
+        }
     }
 })();
