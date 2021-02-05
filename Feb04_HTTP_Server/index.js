@@ -1,7 +1,12 @@
 const http = require("http");
-const server = http
-let dateObj = new Date();
 
+let dateObj = new Date();
+let year = dateObj.getFullYear();
+
+let date = ("0" + dateObj.getDate()).slice(-2);
+let month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
+
+const server = http
     .createServer((request, response) => {
         request.on("error", (err) => console.log(err));
         response.on("error", (err) => console.log(err));
@@ -10,11 +15,14 @@ let dateObj = new Date();
         if (method == "GET") {
             response.setHeader("content-type", "text/html");
             response.statusCode = 200;
-            console.log(response.date);
-            // fs.appendFile("requests.txt", "data to append", (err) => {
-            //     if (err) throw err;
-            //     console.log('The "data to append" was appended to file!');
-            // });
+            let text = `Date: ${date}/${month}/${year}/n
+            Method:${method}/n
+            URL:${url}/n
+            Headers:${req.headers["user-agent"]}`;
+            fs.appendFile("requests.txt", text, (err) => {
+                if (err) throw err;
+                console.log('The "data to append" was appended to file!');
+            });
             response.end(`<!doctype html>
                 <html>
                 <title>Hello World!</title>
