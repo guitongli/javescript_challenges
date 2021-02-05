@@ -1,5 +1,5 @@
 const http = require("http");
-
+const fs = require("fs");
 let dateObj = new Date();
 let year = dateObj.getFullYear();
 
@@ -15,10 +15,10 @@ const server = http
         if (method == "GET") {
             response.setHeader("content-type", "text/html");
             response.statusCode = 200;
-            let text = `Date: ${date}/${month}/${year}/n
-            Method:${method}/n
-            URL:${url}/n
-            Headers:${req.headers["user-agent"]}`;
+            let text = `Date: ${date}/${month}/${year}
+            Method:${method}
+            URL:${url}
+            Headers:${request.headers["user-agent"]}`;
             fs.appendFile("requests.txt", text, (err) => {
                 if (err) throw err;
                 console.log('The "data to append" was appended to file!');
