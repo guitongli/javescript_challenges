@@ -15,14 +15,22 @@ const server = http
         if (method == "GET") {
             response.setHeader("content-type", "text/html");
             response.statusCode = 200;
-            let text = `Date: ${date}/${month}/${year}
-            Method:${method}
-            URL:${url}
+            let text = `Date: ${date}/${month}/${year}\t
+            Method:${method}\t
+            URL:${url}\t
             Headers:${request.headers["user-agent"]}`;
             fs.appendFile("requests.txt", text, (err) => {
-                if (err) throw err;
+                if (err) {
+                    console.log(err);
+                }
                 console.log('The "data to append" was appended to file!');
             });
+            //part 3 suspended
+            if (url.indexOf("/requests.txt")) {
+                const readable = fs.createReadStream("requests.txt");
+                const writable = fs.createWriteStream("file.txt");
+                readable.pipe(writable);
+            }
             response.end(`<!doctype html>
                 <html>
                 <title>Hello World!</title>
