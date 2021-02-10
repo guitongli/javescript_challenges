@@ -1,0 +1,111 @@
+.container {
+    display: flex;
+    position: relative;
+    left: 100px;
+}
+
+.slot {
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+}
+
+.circle {
+    width: 50px;
+    height: 50px;
+    border: 40px teal solid;
+    border-radius: 50%;
+    transform: translate(-30px, -30px);
+}
+
+.player1 {
+    background-color: burlywood;
+}
+
+.player2 {
+    background-color: mediumpurple;
+}
+.player2border {
+    border: 3px solid mediumpurple;
+}
+.player1border {
+    border: 3px solid burlywood;
+}
+
+.col {
+    height: 100vh;
+    padding-top: 100px;
+}
+token {
+    height: 50px;
+    width: 750px;
+    display: flex;
+    position: absolute;
+    z-index: -10;
+}
+.token {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    position: relative;
+    margin: 10px;
+    left: 100px;
+    overflow: hidden;
+}
+
+button {
+    position: absolute;
+    top: 80px;
+    left: 20px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: cadetblue;
+}
+
+.fly {
+    transition-property: transform;
+    transform: translateY(-1000px);
+    transition-duration: 3s;
+}
+
+.drop {
+    transition-property: transform;
+    transform: translateY(450px);
+    transition-duration: 1s;
+}
+.up {
+    transition-property: transform;
+    transform: translateY(-450px);
+    transition-duration: 1s;
+}
+
+img {
+    width: 70px;
+    height: auto;
+    position: relative;
+    right: 10px;
+}
+
+.cursor {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+effect {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    left: 100px;
+    top: 530px;
+}
+.effect {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: burlywood;
+    margin: 10px;
+    visibility: hidden;
+}
