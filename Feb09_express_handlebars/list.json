@@ -1,0 +1,22 @@
+[
+    {
+        "item":"connect 4",
+        "location":"connect4",
+        "description":"reacts at horizontal, vertical and diagnal connections"
+    },
+    {
+        "item":"incremental search",
+        "location":"search",
+        "description":"country search with incomplete input"
+    },
+    {
+        "item":"spotify search",
+        "location":"spotify",
+        "description":"search artists and albums with Spotify API"
+    },
+    {
+        "item":"infinite ticker",
+        "location":"ticker",
+        "description":"animation using DOM control"
+    }
+]

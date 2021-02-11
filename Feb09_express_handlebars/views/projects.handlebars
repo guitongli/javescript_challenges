@@ -1,0 +1,17 @@
+
+
+<container>
+
+<div class = "list"><h1>{{>projList}}</h1></div>
+{{#current}}
+<div class ="verticle">
+<div class = "img">
+    <img src = "/{{location}}/screenshot.png" alt ="{{item}}" class = "img"/>
+    </div>
+<div class = "description"> {{description}}</div>
+</div>
+<a href = "../{{location}}" target = "__blank" >launch</a>
+
+{{/current}}
+
+</container>

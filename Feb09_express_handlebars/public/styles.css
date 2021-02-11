@@ -1,0 +1,17 @@
+.small {
+    width: 200px;
+}
+.img {
+    width: 400px;
+}
+
+.inline {
+    display: inline-block;
+}
+
+container {
+    display: flex;
+}
+.highlight {
+    background-color: yellow;
+}
