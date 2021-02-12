@@ -9,7 +9,7 @@ const { key, secret } = secrets;
 const https = require("https");
 // to talk to the api
 var bearerToken = "";
-module.exports.getToken = function getToken() {
+module.exports.getToken = function getToken(tokenProcess) {
     // bearerToken
     let credentials = `${key}:${secret}`;
     let encodedCredentials = Buffer.from(credentials).toString("base64");
@@ -58,13 +58,45 @@ module.exports.getToken = function getToken() {
             console.error(error);
         });
         res.on("end", () => {
-            bearerToken = JSON.parse(body).access_token;
+            var token = JSON.parse(body).access_token;
+
+            tokenProcess(token);
         });
     });
     req.end("grant_type=client_credentials");
 };
-console.log(bearerToken);
-// module.exports.getTweets = function getTweets(bearerTocken, callbackTweets) {};
+
+module.exports.getTweets = function getTweets(token) {
+    let bearer = token.toString("base64");
+    console.log(bearer);
+    const options = {
+        host: "api.twitter.com",
+        path:
+            "/1.1/statuses/user_timeline.json?count=100&screen_name=twitterapi",
+        method: "GET",
+        headers: {
+            authorization: `Bearer ${bearer}`,
+        },
+    };
+    const req = https.request(options, (res) => {
+        if (res.statusCode != "200") {
+            console.log(res.statusCode);
+            return;
+        }
+        let body = "";
+        res.on("data", (chunk) => {
+            body += chunk;
+        });
+        req.on("error", (error) => {
+            console.error(error);
+        });
+        res.on("end", () => {
+            var response = JSON.parse(body);
+            console.log(response);
+        });
+    });
+    req.end();
+};
 
 // module.exports.filterTweets = function filterTweets(tweets) {
 //     // clean up / filter our tween response.

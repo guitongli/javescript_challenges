@@ -5,13 +5,9 @@ const { getToken, getTweets, filterTweets } = require("./twitter");
 app.use(express.static("./ticker"));
 // need to figure out how this works
 
-function bearerToken(t) {
-    console.log(t);
-}
-
 app.get("/", (req, res) => {
     console.log("requiring");
-    getToken();
+    getToken(getTweets);
     // getToken((err, bearerToken) => {
     //     if (err) {
     //         console.log(err);
