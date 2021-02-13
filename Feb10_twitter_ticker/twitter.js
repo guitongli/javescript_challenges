@@ -52,8 +52,8 @@ module.exports.getToken = function getToken(callbackToken) {
 };
 
 module.exports.getTweets = function getTweets(token, callbackTweets) {
-    const bearerToken = Buffer.from(token).toString("base64");
-    console.log(bearerToken);
+    // const bearerToken = Buffer.from(token).toString("base64");
+    // console.log(bearerToken);
     const options = {
         method: "GET",
         host: "api.twitter.com",
