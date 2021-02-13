@@ -8,11 +8,7 @@ const { key, secret } = secrets;
 
 const https = require("https");
 // to talk to the api
-var bearerToken;
-function remember(token) {
-    bearerToken += token;
-    console.log(bearerToken);
-}
+
 module.exports.getToken = function getToken(callbackToken) {
     // callbackToken
     let credentials = `${key}:${secret}`;
