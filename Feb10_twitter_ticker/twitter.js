@@ -8,9 +8,13 @@ const { key, secret } = secrets;
 
 const https = require("https");
 // to talk to the api
-var bearerToken = "";
-module.exports.getToken = function getToken(tokenProcess) {
-    // bearerToken
+var bearerToken;
+function remember(token) {
+    bearerToken += token;
+    console.log(bearerToken);
+}
+module.exports.getToken = function getToken(callbackToken) {
+    // callbackToken
     let credentials = `${key}:${secret}`;
     let encodedCredentials = Buffer.from(credentials).toString("base64");
 
@@ -24,26 +28,6 @@ module.exports.getToken = function getToken(tokenProcess) {
             "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
         },
     };
-    // function reqCallback(response){
-    //     if(response.statusCode !=200){
-    //         callbackTocken(response.statusCode);
-
-    //         return;
-
-    //     }
-    //     let body='';
-    //     response.on('data', (chunk)=>{
-    //         body += chunk;
-    //     });
-
-    //     response.on('end', ()=> {
-    //         console.log("body" body);
-    //         let parsedBody = JSON.parse(body);
-    //         console.log("parsed", parsedBody.access_token);
-    //         callbackToken(null, parsedBody.access_token);
-    //         //null means actively setting everything is ok, whereas undefined is  the default and means nothing.
-    //     })
-    // }
 
     const req = https.request(options, (res) => {
         if (res.statusCode != "200") {
@@ -59,23 +43,27 @@ module.exports.getToken = function getToken(tokenProcess) {
         });
         res.on("end", () => {
             var token = JSON.parse(body).access_token;
-
-            tokenProcess(token);
+            console.log(token);
+            callbackToken(null, token);
+            // getTweets(token, null);
         });
     });
     req.end("grant_type=client_credentials");
 };
 
-module.exports.getTweets = function getTweets(token) {
-    let bearer = token.toString("base64");
-    console.log(bearer);
+module.exports.getTweets = function getTweets(token, callbackTweets) {
+    const bearerToken = Buffer.from(token).toString("base64");
+    console.log(bearerToken);
     const options = {
+        method: "GET",
         host: "api.twitter.com",
         path:
-            "/1.1/statuses/user_timeline.json?count=100&screen_name=twitterapi",
-        method: "GET",
+            "/1.1/statuses/user_timeline.json?screen_name=twitterapi&count=2&tweet_mode=extended",
+
         headers: {
-            authorization: `Bearer ${bearer}`,
+            Authorization: `Bearer ${token}`,
+            // "User-Agent": "My Twitter App v1.0.23",
+            // "Accept-Encoding": "gzip",
         },
     };
     const req = https.request(options, (res) => {
@@ -91,13 +79,47 @@ module.exports.getTweets = function getTweets(token) {
             console.error(error);
         });
         res.on("end", () => {
-            var response = JSON.parse(body);
-            console.log(response);
+            var tweets = JSON.parse(body);
+
+            callbackTweets(null, tweets);
         });
     });
     req.end();
 };
 
-// module.exports.filterTweets = function filterTweets(tweets) {
-//     // clean up / filter our tween response.
-// };
+module.exports.filterTweets = function filterTweets(response) {
+    var tweetArray = [];
+    response.forEach((item) => {
+        var link = item.entities.urls[0].url;
+        var fullText = item.full_text.replace(link, "");
+        var linkProfile = {
+            url: link,
+            text: fullText,
+        };
+        if (!linkProfile.text.includes("http")) {
+            tweetArray.push(linkProfile);
+        }
+    });
+    return tweetArray;
+};
+
+// function reqCallback(response){
+//     if(response.statusCode !=200){
+//         callbackTocken(response.statusCode);
+
+//         return;
+
+//     }
+//     let body='';
+//     response.on('data', (chunk)=>{
+//         body += chunk;
+//     });
+
+//     response.on('end', ()=> {
+//         console.log("body" body);
+//         let parsedBody = JSON.parse(body);
+//         console.log("parsed", parsedBody.access_token);
+//         callbackToken(null, parsedBody.access_token);
+//         //null means actively setting everything is ok, whereas undefined is  the default and means nothing.
+//     })
+// }

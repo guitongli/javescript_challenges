@@ -1,32 +1,42 @@
-// it doesn't run automatically when I open the html file
-// the end of the ticker always gets filled up some seconds delayed
-
 (function () {
-    console.log("ticker goes left");
-
-    var news = document.getElementsByTagName("a");
-    var newsTrain = document.getElementById("wrapper");
-    var ticker = document.getElementById("ticker");
-    var curX = newsTrain.offsetLeft;
+    var news = $("a");
+    var newsTrain = $("#wrapper");
+    var ticker = $("#ticker");
+    var curX = newsTrain.offset.left;
     var animID;
 
     function moveNews() {
-        curX--;
+        newsTrain.animate({ left: "-=1px" }, 1);
         if (curX <= -news[0].offsetWidth) {
             curX += news[0].offsetWidth;
 
             newsTrain.appendChild(news[0]);
         }
 
-        newsTrain.style.left = curX + "px";
+        newsTrain.css.left = curX + "px";
         animID = requestAnimationFrame(moveNews);
     }
     moveNews();
 
-    ticker.addEventListener("mouseenter", function () {
+    ticker.on("mouseenter", function () {
         cancelAnimationFrame(animID);
     });
-    ticker.addEventListener("mouseleave", function () {
+    ticker.on("mouseleave", function () {
         moveNews();
+    });
+
+    $.ajax({
+        url: "/ticker.json",
+        method: "GET",
+        success: function (responseData) {
+            for (var i = 0; i < responseData.length; i++) {
+                var link = "'" + responseData[i].href + "'";
+                $("a").eq(i).attr("href", link);
+                $("a").eq(i).attr("target", "_blank");
+            }
+        },
+        error: function (err) {
+            console.log("error in ajax:", err);
+        },
     });
 })();

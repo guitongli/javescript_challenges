@@ -5,12 +5,13 @@ a {
     width: 100%;
     height: 25px;
     border: 2px dotted aquamarine;
+    margin: 0;
 }
 #wrapper {
     overflow: hidden;
-    white-space: nowrap
-    background-color: forestgreen;
+    white-space: nowrap;
     height: 20px;
     position: relative;
-    left: 100%
+    left: 100%;
+    width: 120%;
 }
