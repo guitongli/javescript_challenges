@@ -10,7 +10,7 @@
         if (curX <= -news[0].offsetWidth) {
             curX += news[0].offsetWidth;
 
-            newsTrain.appendChild(news(0));
+            newsTrain.appendChild(news[0]);
         }
 
         newsTrain.css.left = curX + "px";

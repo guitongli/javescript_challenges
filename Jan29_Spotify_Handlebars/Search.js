@@ -29,6 +29,7 @@
                 // var resultsHtml = "";
                 response = response.artists || response.albums;
                 var itemList = response.items;
+                console.log(response);
                 if (itemList.length > 1) {
                     $(".resultsof").html(
                         "<p> Results for " + $("input").val() + "</p>"
